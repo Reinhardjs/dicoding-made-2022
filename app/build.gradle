@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -33,8 +36,12 @@ android {
 }
 
 dependencies {
+
     implementation project(":core")
     implementation project(":favourite")
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     implementation "androidx.core:core-ktx:${corektx_version}"
     implementation "androidx.appcompat:appcompat:${appcompat_version}"
