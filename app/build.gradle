@@ -6,6 +6,8 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+apply from: '../shared_dependencies.gradle'
+
 android {
     namespace 'com.example.dicoding_made_2022'
     compileSdk 33
@@ -40,14 +42,4 @@ dependencies {
     implementation project(":core")
     implementation project(":favourite")
 
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-
-    implementation "androidx.core:core-ktx:${corektx_version}"
-    implementation "androidx.appcompat:appcompat:${appcompat_version}"
-    implementation "com.google.android.material:material:${material_version}"
-    implementation "androidx.constraintlayout:constraintlayout:${constraintlayout_version}"
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
