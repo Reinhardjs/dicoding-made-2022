@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class MarvelEvent(
     val id: Int,
-    val title: String,
-    val description: String,
-    val thumbnail: Thumbnail
+    val title: String? = null,
+    val description: String? = null,
+    val thumbnail: Thumbnail? = null
 ) : Parcelable

@@ -16,6 +16,9 @@ android {
         minSdk 21
         targetSdk 33
 
+        buildConfigField "String", "API_KEY", "\"1e03981f81f785d0766fe1e7367a4ba3\""
+        buildConfigField "String", "HASH", "\"4058d4ad53fe9dfdd05390d345e770aa\""
+        buildConfigField "String", "TS", "\"1\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }

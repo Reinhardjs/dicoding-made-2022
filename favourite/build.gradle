@@ -33,9 +33,9 @@ android {
 }
 
 dependencies {
-
-    implementation project(":app")
-    implementation project(":core")
+//
+//    implementation project(":app")
+//    implementation project(":core")
 
     implementation "androidx.core:core-ktx:${corektx_version}"
     implementation "androidx.appcompat:appcompat:${appcompat_version}"

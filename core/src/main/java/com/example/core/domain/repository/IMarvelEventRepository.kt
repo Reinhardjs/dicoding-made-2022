@@ -10,4 +10,6 @@ interface IMarvelEventRepository {
     fun getAllFavouriteMarvelEvent(): Flow<List<MarvelEvent>>
 
     fun setFavouriteMarvelEvent(marvelEvent: MarvelEvent, state: Boolean)
+
+    fun searchMarvelEvent(value: String): Flow<List<MarvelEvent>>
 }

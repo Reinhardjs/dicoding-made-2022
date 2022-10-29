@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Thumbnail(
-    val path: String,
-    val extension: String
+    val path: String? = null,
+    val extension: String? = null
 ): Parcelable
