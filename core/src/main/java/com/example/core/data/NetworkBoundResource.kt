@@ -1,6 +1,5 @@
 package com.example.core.data
 
-import android.util.Log
 import com.example.core.data.source.remote.vo.ApiResponse
 import kotlinx.coroutines.flow.*;
 
@@ -8,10 +7,10 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     private var result: Flow<Resource<ResultType>> = flow {
         emit(Resource.Loading())
         val dbSource = loadFromDB().first()
-        try {
-            if (shouldFetch(dbSource)) {
-                emit(Resource.Loading())
-                when (val apiResponse = createCall().first()) {
+        if (shouldFetch(dbSource)) {
+            emit(Resource.Loading())
+            createCall().collect { apiResponse ->
+                when (apiResponse) {
                     is ApiResponse.Success -> {
                         saveCallResult(apiResponse.data)
                         emitAll(loadFromDB().map {
@@ -36,11 +35,9 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                         )
                     }
                 }
-            } else {
-                emitAll(loadFromDB().map { Resource.Success(it) })
             }
-        } catch (e: NoSuchElementException) {
-            Log.d("NetworkBoundResource", e.message.toString())
+        } else {
+            emitAll(loadFromDB().map { Resource.Success(it) })
         }
     }
 

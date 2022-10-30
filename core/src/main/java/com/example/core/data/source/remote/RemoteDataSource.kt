@@ -17,18 +17,17 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getMarvelEvents()
-                val dataArray = response.results
+                val dataArray = response.data?.results
 
                 if (dataArray != null) {
                     if (dataArray.isNotEmpty()) {
-                        emit(ApiResponse.Success(response.results))
+                        emit(ApiResponse.Success(response.data.results))
                     } else {
                         emit(ApiResponse.Empty)
                     }
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
