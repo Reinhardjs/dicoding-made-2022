@@ -3,6 +3,7 @@ package com.example.core.utils
 import com.example.core.data.source.local.entity.MarvelEventEntity
 import com.example.core.data.source.remote.response.marvelevent.MarvelEventResponse
 import com.example.core.domain.model.MarvelEvent
+import com.example.core.domain.model.Thumbnail
 
 object DataMapper {
     fun mapResponsesToEntities(input: List<MarvelEventResponse>): List<MarvelEventEntity> {
@@ -20,14 +21,19 @@ object DataMapper {
         return movieList
     }
 
-    fun mapEntitiesToDomain(input: List<MarvelEventEntity>): List<MarvelEvent> =
-        input.map {
+    fun mapEntitiesToDomain(input: List<MarvelEventEntity>): List<MarvelEvent> {
+        return input.map {
             MarvelEvent(
                 id = it.marvelEventId,
                 title = it.title,
-                description =  it.description
+                description = it.description,
+                thumbnail = Thumbnail(
+                    path = it.thumbnailUrl?.split(".")?.get(0),
+                    extension = it.thumbnailUrl?.split(".")?.get(1)
+                )
             )
         }
+    }
 
     fun mapDomainToEntity(input: MarvelEvent) =
         MarvelEventEntity(
