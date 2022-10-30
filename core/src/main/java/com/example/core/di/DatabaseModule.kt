@@ -14,11 +14,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class DatabaseModule {
+
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): MarvelEventDatabase = Room.databaseBuilder(
         context,
-        MarvelEventDatabase::class.java, "Movie.db"
+        MarvelEventDatabase::class.java, "MarvelEvent.db"
     ).fallbackToDestructiveMigration().build()
 
     @Provides

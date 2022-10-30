@@ -19,26 +19,24 @@ class MarvelEventRepository @Inject constructor(
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : IMarvelEventRepository {
-    override fun getAllMarvelEvent(): Flow<Resource<List<MarvelEvent>>> {
-        return object :
-            NetworkBoundResource<List<MarvelEvent>, List<MarvelEventResponse>>() {
-            override fun loadFromDB(): Flow<List<MarvelEvent>> {
-                return localDataSource.getAllMarvelEvent().map {
-                    DataMapper.mapEntitiesToDomain(it)
-                }
+    override fun getAllMarvelEvent(): Flow<Resource<List<MarvelEvent>>> = object :
+        NetworkBoundResource<List<MarvelEvent>, List<MarvelEventResponse>>() {
+        override fun loadFromDB(): Flow<List<MarvelEvent>> {
+            return localDataSource.getAllMarvelEvent().map {
+                DataMapper.mapEntitiesToDomain(it)
             }
+        }
 
-            override fun shouldFetch(data: List<MarvelEvent>?): Boolean = data == null || data.isEmpty()
+        override fun shouldFetch(data: List<MarvelEvent>?): Boolean = data == null || data.isEmpty()
 
-            override suspend fun createCall(): Flow<ApiResponse<List<MarvelEventResponse>>> =
-                remoteDataSource.getAllMarvelEvent()
+        override suspend fun createCall(): Flow<ApiResponse<List<MarvelEventResponse>>> =
+            remoteDataSource.getAllMarvelEvent()
 
-            override suspend fun saveCallResult(data: List<MarvelEventResponse>) {
-                val marvelEventList = DataMapper.mapResponsesToEntities(data)
-                localDataSource.insertMarvelEvent(marvelEventList)
-            }
-        }.asFlow()
-    }
+        override suspend fun saveCallResult(data: List<MarvelEventResponse>) {
+            val marvelEventList = DataMapper.mapResponsesToEntities(data)
+            localDataSource.insertMarvelEvent(marvelEventList)
+        }
+    }.asFlow()
 
     override fun getAllFavouriteMarvelEvent(): Flow<List<MarvelEvent>> {
         return localDataSource.getFavoriteMarvelEvent().map {
@@ -48,7 +46,8 @@ class MarvelEventRepository @Inject constructor(
 
     override fun setFavouriteMarvelEvent(marvelEvent: MarvelEvent, state: Boolean) {
         val marvelEventEntity = DataMapper.mapDomainToEntity(marvelEvent)
-        appExecutors.diskIO().execute { localDataSource.setFavoriteMarvelEvent(marvelEventEntity, state) }
+        appExecutors.diskIO()
+            .execute { localDataSource.setFavoriteMarvelEvent(marvelEventEntity, state) }
     }
 
     override fun searchMarvelEvent(value: String): Flow<List<MarvelEvent>> {

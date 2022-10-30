@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.core.data.Resource
@@ -30,7 +31,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-
             homeViewModel.marvelEvent.observe(viewLifecycleOwner) { tourism ->
                 if (tourism != null) {
                     when (tourism) {
@@ -40,8 +40,10 @@ class HomeFragment : Fragment() {
                         is Resource.Success -> {
                             // binding.progressBar.visibility = View.GONE
                             // marvelEventAdapter.setData(tourism.data)
+                            Toast.makeText(context, "Anjay Success", Toast.LENGTH_SHORT).show()
                         }
                         is Resource.Error -> {
+                            Toast.makeText(context, "Anjay Error", Toast.LENGTH_SHORT).show()
                             // binding.progressBar.visibility = View.GONE
                             // binding.viewError.root.visibility = View.VISIBLE
                             // binding.viewError.tvError.text = tourism.message ?: getString(R.string.something_wrong)
@@ -57,9 +59,9 @@ class HomeFragment : Fragment() {
 //            }
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 }

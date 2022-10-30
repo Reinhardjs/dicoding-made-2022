@@ -8,8 +8,8 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("events")
     suspend fun getMarvelEvents(
-        @Query("apiKey") apiKey: String = API_KEY,
-        @Query("hash") hash: String = HASH,
-        @Query("ts") ts: String = TS
+        @Query("apiKey") apiKey: String,
+        @Query("hash") hash: String,
+        @Query("ts") ts: String
     ): ListMarvelEventResponse
 }
