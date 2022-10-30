@@ -1,6 +1,6 @@
 dependencies {
 
-    implementation "androidx.core:core-ktx:${corektx_version}"
+    implementation "androidx.core:core-ktx:${core_ktx_version}"
     implementation "androidx.appcompat:appcompat:${appcompat_version}"
     implementation "com.google.android.material:material:${material_version}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintlayout_version}"
@@ -18,8 +18,5 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
-    kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    annotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
 }

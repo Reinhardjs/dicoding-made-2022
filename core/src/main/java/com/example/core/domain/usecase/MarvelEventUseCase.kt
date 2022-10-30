@@ -9,5 +9,7 @@ interface MarvelEventUseCase {
 
     fun getAlLFavouriteMarvelEvent(): Flow<List<MarvelEvent>>
 
+    fun searchMarvelEvent(value: String): Flow<List<MarvelEvent>>
+
     fun setFavouriteMarvelEvent(marvelEvent: MarvelEvent, state: Boolean)
 }

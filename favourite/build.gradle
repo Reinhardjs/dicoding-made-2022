@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+apply from: '../shared_dependencies.gradle'
+
 android {
     namespace 'com.example.favourite'
     compileSdk 33
@@ -33,11 +35,10 @@ android {
 }
 
 dependencies {
-//
 //    implementation project(":app")
 //    implementation project(":core")
 
-    implementation "androidx.core:core-ktx:${corektx_version}"
+    implementation "androidx.core:core-ktx:${core_ktx_version}"
     implementation "androidx.appcompat:appcompat:${appcompat_version}"
     implementation "com.google.android.material:material:${material_version}"
     testImplementation 'junit:junit:4.13.2'

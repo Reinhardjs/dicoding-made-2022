@@ -15,6 +15,8 @@ class MarvelEventInteractor @Inject constructor(private val marvelEventRepositor
     override fun getAlLFavouriteMarvelEvent(): Flow<List<MarvelEvent>> =
         marvelEventRepository.getAllFavouriteMarvelEvent()
 
+    override fun searchMarvelEvent(value: String): Flow<List<MarvelEvent>> = marvelEventRepository.searchMarvelEvent(value)
+
     override fun setFavouriteMarvelEvent(marvelEvent: MarvelEvent, state: Boolean) =
         marvelEventRepository.setFavouriteMarvelEvent(marvelEvent, state)
 
