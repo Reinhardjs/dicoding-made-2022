@@ -16,11 +16,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun getAllMarvelEvent(): Flow<ApiResponse<List<MarvelEventResponse>>> {
         return flow {
             try {
-                val response = apiService.getMarvelEvents(
-                    "1e03981f81f785d0766fe1e7367a4ba3",
-                    "4058d4ad53fe9dfdd05390d345e770aa",
-                    "1"
-                )
+                val response = apiService.getMarvelEvents()
                 val dataArray = response.results
 
                 if (dataArray != null) {
