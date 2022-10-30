@@ -31,31 +31,31 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            homeViewModel.marvelEvent.observe(viewLifecycleOwner) { tourism ->
-                if (tourism != null) {
-                    when (tourism) {
+            homeViewModel.marvelEvent.observe(viewLifecycleOwner) { marvelEvent ->
+                if (marvelEvent != null) {
+                    when (marvelEvent) {
                         is Resource.Loading -> {
                             // binding.progressBar.visibility = View.VISIBLE
                         }
                         is Resource.Success -> {
                             // binding.progressBar.visibility = View.GONE
-                            // marvelEventAdapter.setData(tourism.data)
+                            // marvelEventAdapter.setData(marvelEvent.data)
                             Toast.makeText(context, "Anjay Success", Toast.LENGTH_SHORT).show()
                         }
                         is Resource.Error -> {
                             Toast.makeText(context, "Anjay Error", Toast.LENGTH_SHORT).show()
                             // binding.progressBar.visibility = View.GONE
                             // binding.viewError.root.visibility = View.VISIBLE
-                            // binding.viewError.tvError.text = tourism.message ?: getString(R.string.something_wrong)
+                            // binding.viewError.tvError.text = marvelEvent.message ?: getString(R.string.something_wrong)
                         }
                     }
                 }
             }
 
-//            with(binding.rvTourism) {
+//            with(binding.rvMarvelEvent) {
 //                layoutManager = LinearLayoutManager(context)
 //                setHasFixedSize(true)
-//                adapter = tourismAdapter
+//                adapter = marvelEventAdapter
 //            }
         }
     }

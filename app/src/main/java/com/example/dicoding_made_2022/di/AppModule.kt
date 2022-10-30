@@ -14,6 +14,6 @@ abstract class AppModule {
 
     @Binds
     @Singleton
-    abstract fun provideMarvelEventUseCase(tourismInteractor: MarvelEventInteractor): MarvelEventUseCase
+    abstract fun provideMarvelEventUseCase(marvelEventInteractor: MarvelEventInteractor): MarvelEventUseCase
 
 }
