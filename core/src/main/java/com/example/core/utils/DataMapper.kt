@@ -1,5 +1,6 @@
 package com.example.core.utils
 
+import android.util.Log
 import com.example.core.data.source.local.entity.MarvelEventEntity
 import com.example.core.data.source.remote.response.marvelevent.MarvelEventResponse
 import com.example.core.domain.model.MarvelEvent
@@ -9,7 +10,6 @@ object DataMapper {
     fun mapResponsesToEntities(input: List<MarvelEventResponse>): List<MarvelEventEntity> {
         val movieList = ArrayList<MarvelEventEntity>()
         input.map { movieResponse ->
-
             val movie = MarvelEventEntity(
                 marvelEventId = movieResponse.id,
                 title = movieResponse.title,
@@ -28,8 +28,8 @@ object DataMapper {
                 title = it.title,
                 description = it.description,
                 thumbnail = Thumbnail(
-                    path = it.thumbnailUrl?.split(".")?.get(0),
-                    extension = it.thumbnailUrl?.split(".")?.get(1)
+                    path = it.thumbnailUrl?.substringBeforeLast("."),
+                    extension = it.thumbnailUrl?.substringAfterLast(".")
                 )
             )
         }
