@@ -8,7 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.dicoding_made_2022.R
 import com.example.dicoding_made_2022.databinding.ActivityMainBinding
-import com.example.dicoding_made_2022.home.HomeFragment
+import com.example.dicoding_made_2022.ui.fragments.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 

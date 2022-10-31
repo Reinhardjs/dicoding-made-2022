@@ -1,4 +1,4 @@
-package com.example.dicoding_made_2022.home
+package com.example.dicoding_made_2022.ui.fragments.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
