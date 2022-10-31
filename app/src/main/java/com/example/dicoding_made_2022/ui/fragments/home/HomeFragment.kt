@@ -1,5 +1,6 @@
 package com.example.dicoding_made_2022.ui.fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.core.data.Resource
 import com.example.core.ui.MarvelAdapter
 import com.example.dicoding_made_2022.R
 import com.example.dicoding_made_2022.databinding.FragmentHomeBinding
+import com.example.dicoding_made_2022.ui.activities.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,9 +38,9 @@ class HomeFragment : Fragment() {
 
             val marvelAdapter = MarvelAdapter()
             marvelAdapter.onItemClick = { selectedData ->
-//                val intent = Intent(activity, DetailTourismActivity::class.java)
-//                intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
-//                startActivity(intent)
+                val intent = Intent(activity, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
+                startActivity(intent)
             }
 
             homeViewModel.marvelEvent.observe(viewLifecycleOwner) { marvelEvent ->

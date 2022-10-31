@@ -1,6 +1,5 @@
 package com.example.core.utils
 
-import android.util.Log
 import com.example.core.data.source.local.entity.MarvelEventEntity
 import com.example.core.data.source.remote.response.marvelevent.MarvelEventResponse
 import com.example.core.domain.model.MarvelEvent
@@ -30,7 +29,8 @@ object DataMapper {
                 thumbnail = Thumbnail(
                     path = it.thumbnailUrl?.substringBeforeLast("."),
                     extension = it.thumbnailUrl?.substringAfterLast(".")
-                )
+                ),
+                isFavorite = it.isFavorite
             )
         }
     }
@@ -40,6 +40,7 @@ object DataMapper {
             marvelEventId = input.id,
             title = input.title,
             description = input.description,
-            thumbnailUrl = "${input.thumbnail?.path}.${input.thumbnail?.extension}"
+            thumbnailUrl = "${input.thumbnail?.path}.${input.thumbnail?.extension}",
+            isFavorite = input.isFavorite
         )
 }

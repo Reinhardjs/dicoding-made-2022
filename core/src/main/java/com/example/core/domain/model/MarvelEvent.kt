@@ -8,5 +8,6 @@ data class MarvelEvent(
     val id: Int,
     val title: String? = null,
     val description: String? = null,
-    val thumbnail: Thumbnail? = null
+    val thumbnail: Thumbnail? = null,
+    val isFavorite: Boolean
 ) : Parcelable
