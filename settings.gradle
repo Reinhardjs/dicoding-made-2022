@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 rootProject.name = "dicoding-made-2022"
 include ':app'
 include ':core'
-include ':favourite'
