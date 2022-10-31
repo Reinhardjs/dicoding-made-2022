@@ -8,18 +8,18 @@ import com.example.core.domain.model.URLs
 
 object DataMapper {
     fun mapResponsesToEntities(input: List<MarvelEventResponse>): List<MarvelEventEntity> {
-        val movieList = ArrayList<MarvelEventEntity>()
-        input.map { movieResponse ->
-            val movie = MarvelEventEntity(
-                marvelEventId = movieResponse.id,
-                title = movieResponse.title,
-                description = movieResponse.description,
-                thumbnailUrl = "${movieResponse.thumbnail?.path}.${movieResponse.thumbnail?.extension}",
-                detailUrl = movieResponse.urls?.get(0)?.url
+        val marvelList = ArrayList<MarvelEventEntity>()
+        input.map { marvelResponse ->
+            val marvel = MarvelEventEntity(
+                marvelEventId = marvelResponse.id,
+                title = marvelResponse.title,
+                description = marvelResponse.description,
+                thumbnailUrl = "${marvelResponse.thumbnail?.path}.${marvelResponse.thumbnail?.extension}",
+                detailUrl = marvelResponse.urls?.get(0)?.url
             )
-            movieList.add(movie)
+            marvelList.add(marvel)
         }
-        return movieList
+        return marvelList
     }
 
     fun mapEntitiesToDomain(input: List<MarvelEventEntity>): List<MarvelEvent> {

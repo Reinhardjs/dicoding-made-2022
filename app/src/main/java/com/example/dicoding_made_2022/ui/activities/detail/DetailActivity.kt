@@ -45,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
                 Glide.with(context)
                     .load(detailMarvel.thumbnail?.path + "." + detailMarvel.thumbnail?.extension)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(posterMovie)
+                    .into(posterMarvel)
                 val url = detailMarvel.urls?.get(0)?.url
                 tvLink.text = url
                 val uris = Uri.parse(url)

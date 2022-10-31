@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poster_movie"
+        app:layout_constraintTop_toBottomOf="@+id/poster_marvel"
         tools:text="Marvel Event Title" />
 
     <TextView
@@ -59,7 +59,7 @@
         tools:text="textView" />
 
     <ImageView
-        android:id="@+id/poster_movie"
+        android:id="@+id/poster_marvel"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:layout_marginTop="10dp"

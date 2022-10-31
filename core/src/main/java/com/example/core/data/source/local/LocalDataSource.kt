@@ -7,17 +7,17 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LocalDataSource @Inject constructor(private val movieDao: MarvelEventDao) {
-    fun getAllMarvelEvent(): Flow<List<MarvelEventEntity>> = movieDao.getListMarvelEvent()
+class LocalDataSource @Inject constructor(private val marvelDao: MarvelEventDao) {
+    fun getAllMarvelEvent(): Flow<List<MarvelEventEntity>> = marvelDao.getListMarvelEvent()
 
-    suspend fun insertMarvelEvent(movie: List<MarvelEventEntity>) = movieDao.insertMarvelEvent(movie)
+    suspend fun insertMarvelEvent(marvel: List<MarvelEventEntity>) = marvelDao.insertMarvelEvent(marvel)
 
-    fun getFavoriteMarvelEvent(): Flow<List<MarvelEventEntity>> = movieDao.getBookmarkedMarvelEvent()
+    fun getFavoriteMarvelEvent(): Flow<List<MarvelEventEntity>> = marvelDao.getBookmarkedMarvelEvent()
 
-    fun setFavoriteMarvelEvent(movie: MarvelEventEntity, newState: Boolean) {
-        movie.isFavorite = newState
-        movieDao.updateMarvelEvent(movie)
+    fun setFavoriteMarvelEvent(marvel: MarvelEventEntity, newState: Boolean) {
+        marvel.isFavorite = newState
+        marvelDao.updateMarvelEvent(marvel)
     }
 
-    fun searchMarvelEvent(value: String): Flow<List<MarvelEventEntity>> = movieDao.searchMarvelEvents(value)
+    fun searchMarvelEvent(value: String): Flow<List<MarvelEventEntity>> = marvelDao.searchMarvelEvents(value)
 }
