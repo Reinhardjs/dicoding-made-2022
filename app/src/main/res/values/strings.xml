@@ -23,4 +23,6 @@
     <string name="menu_search">Search</string>
     <string name="added_to_favorite">was added to favorite</string>
     <string name="removed_from_favorite">was removed from favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.dicoding_made_2022.R
 import com.example.dicoding_made_2022.databinding.ActivityMainBinding
+import com.example.dicoding_made_2022.ui.fragments.favourite.FavouriteFragment
 import com.example.dicoding_made_2022.ui.fragments.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,8 +54,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
-//                fragment = FavoriteFragment()
-//                title = getString(R.string.menu_favorite)
+                fragment = FavouriteFragment()
+                title = getString(R.string.menu_favorite)
             }
         }
         if (fragment != null) {
