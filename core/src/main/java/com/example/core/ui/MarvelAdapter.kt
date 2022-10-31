@@ -24,7 +24,10 @@ class MarvelAdapter : RecyclerView.Adapter<MarvelAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_marvel_event, parent, false))
+        ListViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_list_marvel_event, parent, false)
+        )
 
     override fun getItemCount() = listData.size
 
@@ -41,7 +44,6 @@ class MarvelAdapter : RecyclerView.Adapter<MarvelAdapter.ListViewHolder>() {
                     .load(data.thumbnail?.path + "." + data.thumbnail?.extension)
                     .into(ivItemImage)
                 tvItemTitle.text = data.title
-                tvItemSubtitle.text = data.description
             }
         }
 

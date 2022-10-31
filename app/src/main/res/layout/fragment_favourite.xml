@@ -9,8 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favourite_marvel_event"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_list_marvel_event" />
+        android:layout_height="match_parent" />
 
     <include
         android:id="@+id/view_empty"
