@@ -62,10 +62,10 @@ class FavouriteFragment : Fragment() {
                 startActivity(intent)
             }
 
-            favouriteViewModel.favouriteMarvelEvent.observe(viewLifecycleOwner) { dataTourism ->
-                marvelEventAdapter.setData(dataTourism)
+            favouriteViewModel.favouriteMarvelEvent.observe(viewLifecycleOwner) { dataMarvelEvent ->
+                marvelEventAdapter.setData(dataMarvelEvent)
                 binding.viewEmpty.root.visibility =
-                    if (dataTourism.isNotEmpty()) View.GONE else View.VISIBLE
+                    if (dataMarvelEvent.isNotEmpty()) View.GONE else View.VISIBLE
             }
 
             with(binding.rvFavouriteMarvelEvent) {
