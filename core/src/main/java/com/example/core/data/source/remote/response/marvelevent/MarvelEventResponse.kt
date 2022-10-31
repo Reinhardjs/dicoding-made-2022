@@ -13,5 +13,8 @@ data class MarvelEventResponse(
     val description: String? = null,
 
     @field:SerializedName("thumbnail")
-    val thumbnail: ThumbnailResponse? = null
+    val thumbnail: ThumbnailResponse? = null,
+
+    @field:SerializedName("urls")
+    val urls: List<URLsResponse>? = null
 )

@@ -24,6 +24,9 @@ data class MarvelEventEntity(
     @ColumnInfo(name = "thumbnail")
     val thumbnailUrl: String? = null,
 
+    @ColumnInfo(name = "detailUrl")
+    var detailUrl: String? = null,
+
     @ColumnInfo(name = "bookmarked")
-    var isFavorite: Boolean = false,
+    var isFavorite: Boolean = false
 ) : Parcelable
