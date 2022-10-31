@@ -1,4 +1,4 @@
-package com.example.dicoding_made_2022.ui.fragments.favourite
+package com.example.favourite.fragments.favourite
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,20 +10,41 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.ui.MarvelAdapter
 import com.example.dicoding_made_2022.databinding.FragmentFavouriteBinding
+import com.example.dicoding_made_2022.di.FavouriteModuleDependencies
 import com.example.dicoding_made_2022.ui.activities.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.favourite.di.DaggerFavouriteComponent
+import com.example.favourite.di.ViewModelFactory
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavouriteFragment : Fragment() {
 
-    private val favoriteViewModel: FavouriteViewModel by viewModels()
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val favouriteViewModel: FavouriteViewModel by viewModels {
+        factory
+    }
 
     private var _binding: FragmentFavouriteBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerFavouriteComponent.builder()
+            .context(requireContext())
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    requireContext(),
+                    FavouriteModuleDependencies::class.java
+                )
+            )
+            .build()
+            .inject(this)
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,7 +62,7 @@ class FavouriteFragment : Fragment() {
                 startActivity(intent)
             }
 
-            favoriteViewModel.favouriteMarvelEvent.observe(viewLifecycleOwner) { dataTourism ->
+            favouriteViewModel.favouriteMarvelEvent.observe(viewLifecycleOwner) { dataTourism ->
                 marvelEventAdapter.setData(dataTourism)
                 binding.viewEmpty.root.visibility =
                     if (dataTourism.isNotEmpty()) View.GONE else View.VISIBLE

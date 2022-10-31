@@ -1,5 +1,6 @@
 package com.example.dicoding_made_2022.ui.activities.main;
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,9 +9,9 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.dicoding_made_2022.R
 import com.example.dicoding_made_2022.databinding.ActivityMainBinding
-import com.example.dicoding_made_2022.ui.fragments.favourite.FavouriteFragment
 import com.example.dicoding_made_2022.ui.fragments.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.android.play.core.splitcompat.SplitCompat
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.install(this)
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var fragment: Fragment? = null
         var title = getString(R.string.app_name)
@@ -54,7 +60,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
-                fragment = FavouriteFragment()
+                val dynamicFeatureClassName =
+                    "com.example.favourite.fragments.favourite.FavouriteFragment"
+                fragment = Fragment.instantiate(this, dynamicFeatureClassName)
                 title = getString(R.string.menu_favorite)
             }
         }
