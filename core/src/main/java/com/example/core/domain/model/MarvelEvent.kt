@@ -1,7 +1,6 @@
 package com.example.core.domain.model
 
 import android.os.Parcelable
-import com.example.core.data.source.remote.response.marvelevent.URLsResponse
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

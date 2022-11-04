@@ -1,6 +1,5 @@
 package com.example.core.data.source.remote
 
-import android.util.Log
 import com.example.core.data.source.remote.network.ApiService
 import com.example.core.data.source.remote.response.marvelevent.MarvelEventResponse
 import com.example.core.data.source.remote.vo.ApiResponse

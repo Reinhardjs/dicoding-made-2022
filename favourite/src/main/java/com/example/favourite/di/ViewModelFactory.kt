@@ -9,7 +9,6 @@ import javax.inject.Inject
 class ViewModelFactory @Inject constructor(private val marvelEventUseCase: MarvelEventUseCase) :
     ViewModelProvider.NewInstanceFactory() {
 
-    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         when {
             modelClass.isAssignableFrom(FavouriteViewModel::class.java) -> {
