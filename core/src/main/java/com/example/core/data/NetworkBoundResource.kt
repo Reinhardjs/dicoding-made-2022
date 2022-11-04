@@ -1,7 +1,7 @@
 package com.example.core.data
 
 import com.example.core.data.source.remote.vo.ApiResponse
-import kotlinx.coroutines.flow.*;
+import kotlinx.coroutines.flow.*
 
 abstract class NetworkBoundResource<ResultType, RequestType> {
     private var result: Flow<Resource<ResultType>> = flow {
@@ -29,7 +29,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                     is ApiResponse.Error -> {
                         onFetchFailed()
                         emit(
-                            Resource.Error<ResultType>(
+                            Resource.Error(
                                 apiResponse.errorMessage
                             )
                         )

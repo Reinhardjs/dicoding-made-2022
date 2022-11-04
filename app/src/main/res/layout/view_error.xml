@@ -10,7 +10,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="Something wrong"
+        android:text="@string/error_message"
         android:textSize="18sp" />
 
 </RelativeLayout>

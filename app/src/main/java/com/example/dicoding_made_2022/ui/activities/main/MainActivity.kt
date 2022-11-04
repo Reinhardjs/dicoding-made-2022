@@ -1,4 +1,4 @@
-package com.example.dicoding_made_2022.ui.activities.main;
+package com.example.dicoding_made_2022.ui.activities.main
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

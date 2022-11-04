@@ -11,7 +11,6 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "tb_marvelevent")
 data class MarvelEventEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo(name = "marvelEventId")
     val marvelEventId: Int,
 
